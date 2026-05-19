@@ -1,10 +1,10 @@
 public class Characters {
-    int darah;
-    String nama;
-    int damage;
-    String elemen;
-    int elemenDamage;
-    int mana;
+    private int darah;
+    private String nama;
+    private int damage;
+    private String elemen;
+    private int elemenDamage;
+    private int mana;
 
     public Characters(String nama, int darah, int damage, int mana) {
         this.nama = nama;
