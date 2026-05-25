@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>RM Makmur – Daftar Menu</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --cream: #fdf6e3;
+      --warm-white: #fffdf7;
+      --gold: #c8973a;
+      --gold-light: #f0c96b;
+      --brown: #4a2c0a;
+      --brown-mid: #7a4718;
+      --red: #c0392b;
+      --green: #1a7a5e;
+      --text: #2b1a0a;
+      --muted: #8a6a4a;
+      --divider: #e8d9b8;
+      --badge-bg: #fff3d6;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background-color: var(--cream);
+      font-family: 'Nunito', sans-serif;
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    /* ── HEADER ── */
+    header {
+      background: var(--brown);
+      text-align: center;
+      padding: 36px 20px 28px;
+      position: relative;
+      overflow: hidden;
+    }
+    header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 18px,
+        rgba(255,255,255,.03) 18px,
+        rgba(255,255,255,.03) 36px
+      );
+    }
+    header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.2rem, 7vw, 3.6rem);
+      color: var(--gold-light);
+      letter-spacing: 3px;
+      text-shadow: 0 2px 8px rgba(0,0,0,.4);
+      position: relative;
+    }
+    header p.tagline {
+      color: rgba(255,255,255,.65);
+      font-size: .9rem;
+      margin-top: 6px;
+      letter-spacing: 1px;
+      position: relative;
+    }
+    .header-deco {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 12px;
+      position: relative;
+    }
+    .header-deco span { height: 1px; width: 60px; background: var(--gold); display: block; }
+    .header-deco .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--gold-light); display: block; }
+
+    /* ── NAV TABS ── */
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 0;
+      background: var(--brown-mid);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 10px rgba(0,0,0,.25);
+    }
+    nav a {
+      text-decoration: none;
+      color: rgba(255,255,255,.7);
+      font-weight: 700;
+      font-size: .85rem;
+      padding: 13px 22px;
+      letter-spacing: .8px;
+      text-transform: uppercase;
+      transition: background .2s, color .2s;
+      border-bottom: 3px solid transparent;
+    }
+    nav a:hover, nav a.active {
+      color: var(--gold-light);
+      background: rgba(0,0,0,.18);
+      border-bottom-color: var(--gold-light);
+    }
+
+    /* ── PROMO BANNER ── */
+    .promo-banner {
+      background: linear-gradient(135deg, var(--red) 0%, #8b1a12 100%);
+      color: #fff;
+      padding: 14px 20px;
+      text-align: center;
+    }
+    .promo-banner .promo-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+    .promo-badge {
+      display: inline-block;
+      background: var(--gold-light);
+      color: var(--brown);
+      font-weight: 700;
+      font-size: .8rem;
+      padding: 2px 10px;
+      border-radius: 20px;
+      margin-left: 8px;
+    }
+    .promo-items {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 6px 18px;
+      margin-top: 10px;
+    }
+    .promo-item {
+      font-size: .8rem;
+      opacity: .92;
+    }
+    .promo-item::before { content: '✦ '; font-size: .65rem; }
+
+    /* ── MAIN ── */
+    main {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 28px 16px 60px;
+    }
+
+    /* ── SECTION ── */
+    section {
+      margin-bottom: 36px;
+    }
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+    .section-icon {
+      font-size: 1.3rem;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.25rem;
+      color: var(--brown);
+      letter-spacing: .5px;
+    }
+    .section-line {
+      flex: 1;
+      height: 1px;
+      background: var(--divider);
+    }
+
+    /* ── CARD ── */
+    .menu-card {
+      background: var(--warm-white);
+      border: 1px solid var(--divider);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    /* ── MENU ROW ── */
+    .menu-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 11px 18px;
+      border-bottom: 1px solid var(--divider);
+      transition: background .15s;
+    }
+    .menu-row:last-child { border-bottom: none; }
+    .menu-row:hover { background: var(--badge-bg); }
+    .menu-name {
+      font-weight: 600;
+      font-size: .92rem;
+      color: var(--text);
+    }
+    .menu-price {
+      font-weight: 700;
+      font-size: .9rem;
+      color: var(--brown-mid);
+      white-space: nowrap;
+      margin-left: 12px;
+    }
+
+    /* ── SPECIAL / CHEAP ── */
+    .menu-row.special .menu-name { color: var(--red); }
+
+    /* ── PROMO GRID ── */
+    .promo-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 10px;
+    }
+    .promo-card {
+      background: linear-gradient(135deg, #fff8ed, var(--badge-bg));
+      border: 1.5px solid var(--gold);
+      border-radius: 10px;
+      padding: 12px 14px;
+    }
+    .promo-card .pc-name {
+      font-weight: 700;
+      font-size: .85rem;
+      color: var(--brown);
+      line-height: 1.35;
+    }
+    .promo-card .pc-includes {
+      font-size: .75rem;
+      color: var(--muted);
+      margin-top: 3px;
+    }
+    .promo-card .pc-price {
+      display: inline-block;
+      margin-top: 8px;
+      background: var(--red);
+      color: #fff;
+      font-weight: 700;
+      font-size: .8rem;
+      border-radius: 6px;
+      padding: 2px 10px;
+    }
+
+    /* ── MURAH BANNER ── */
+    .cheap-row {
+      background: #fff3f3;
+    }
+    .cheap-row .menu-name { color: var(--red); font-weight: 700; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--brown);
+      color: rgba(255,255,255,.75);
+      text-align: center;
+      padding: 28px 20px;
+      font-size: .85rem;
+    }
+    footer .ft-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      color: var(--gold-light);
+      margin-bottom: 8px;
+    }
+    footer .ft-line { margin: 4px 0; }
+    footer .ft-platforms {
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      margin-top: 14px;
+      flex-wrap: wrap;
+    }
+    .plat-badge {
+      background: rgba(255,255,255,.12);
+      border: 1px solid rgba(255,255,255,.22);
+      border-radius: 8px;
+      padding: 5px 14px;
+      font-size: .78rem;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: .5px;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 480px) {
+      nav a { padding: 12px 14px; font-size: .75rem; }
+      .promo-grid { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <h1>RM MAKMUR</h1>
+  <p class="tagline">Masakan Nusantara · Harga Bersahabat</p>
+  <div class="header-deco">
+    <span></span><span class="dot"></span><span></span>
+  </div>
+</header>
+
+<!-- NAV -->
+<nav>
+  <a href="#paket" class="active">Paket Hemat</a>
+  <a href="#makanan">Makanan</a>
+  <a href="#minuman">Minuman</a>
+</nav>
+
+<!-- PROMO BANNER -->
+<div class="promo-banner">
+  <div class="promo-title">🍳 Menu Spesial Murah
+    <span class="promo-badge">Terbatas!</span>
+  </div>
+  <div class="promo-items">
+    <span class="promo-item">Telor Dadar + Nasi → Rp 8.000</span>
+    <span class="promo-item">Ayam Geprek + Nasi → Rp 10.000</span>
+  </div>
+</div>
+
+<main>
+
+  <!-- ══ PAKET HEMAT ══ -->
+  <section id="paket">
+    <div class="section-header">
+      <span class="section-icon">🤑</span>
+      <h2 class="section-title">Paket Hemat — Serba Rp 15.000</h2>
+      <span class="section-line"></span>
+    </div>
+    <div class="promo-grid">
+      <div class="promo-card">
+        <div class="pc-name">Ayam Bakar Nasi</div>
+        <div class="pc-includes">+ Tea Jus</div>
+        <span class="pc-price">Rp 15.000</span>
+      </div>
+      <div class="promo-card">
+        <div class="pc-name">Ayam Penyet Nasi</div>
+        <div class="pc-includes">+ Tea Jus</div>
+        <span class="pc-price">Rp 15.000</span>
+      </div>
+      <div class="promo-card">
+        <div class="pc-name">Soto Ayam Nasi</div>
+        <div class="pc-includes">+ Tea Jus</div>
+        <span class="pc-price">Rp 15.000</span>
+      </div>
+      <div class="promo-card">
+        <div class="pc-name">Sop Ayam Nasi</div>
+        <div class="pc-includes">+ Tea Jus</div>
+        <span class="pc-price">Rp 15.000</span>
+      </div>
+      <div class="promo-card">
+        <div class="pc-name">Sop Bakso Nasi</div>
+        <div class="pc-includes">+ Tea Jus</div>
+        <span class="pc-price">Rp 15.000</span>
+      </div>
+      <div class="promo-card">
+        <div class="pc-name">Bakso Bakar Nasi</div>
+        <div class="pc-includes">+ Tea Jus</div>
+        <span class="pc-price">Rp 15.000</span>
+      </div>
+      <div class="promo-card">
+        <div class="pc-name">Bakso Urat</div>
+        <div class="pc-includes">+ Tea Jus</div>
+        <span class="pc-price">Rp 15.000</span>
+      </div>
+      <div class="promo-card">
+        <div class="pc-name">Bakso Halus</div>
+        <div class="pc-includes">+ Tea Jus</div>
+        <span class="pc-price">Rp 15.000</span>
+      </div>
+      <div class="promo-card">
+        <div class="pc-name">Mie Ayam</div>
+        <div class="pc-includes">+ Tea Jus</div>
+        <span class="pc-price">Rp 15.000</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ MAKANAN ══ -->
+  <section id="makanan">
+    <div class="section-header">
+      <span class="section-icon">🍽️</span>
+      <h2 class="section-title">Daftar Makanan</h2>
+      <span class="section-line"></span>
+    </div>
+
+    <!-- Ayam -->
+    <div class="section-header" style="margin-bottom:8px;margin-top:18px;">
+      <span style="font-size:.75rem;font-weight:700;color:var(--muted);letter-spacing:1px;text-transform:uppercase;">Ayam</span>
+      <span class="section-line"></span>
+    </div>
+    <div class="menu-card">
+      <div class="menu-row"><span class="menu-name">Ayam Bakar + Nasi</span><span class="menu-price">Rp 14.000</span></div>
+      <div class="menu-row"><span class="menu-name">Ayam Penyet + Nasi</span><span class="menu-price">Rp 14.000</span></div>
+      <div class="menu-row"><span class="menu-name">Ayam Cobek + Nasi</span><span class="menu-price">Rp 16.000</span></div>
+      <div class="menu-row"><span class="menu-name">Geprek Bakar + Nasi</span><span class="menu-price">Rp 12.000</span></div>
+    </div>
+
+    <!-- Bakso -->
+    <div class="section-header" style="margin-bottom:8px;margin-top:18px;">
+      <span style="font-size:.75rem;font-weight:700;color:var(--muted);letter-spacing:1px;text-transform:uppercase;">Bakso</span>
+      <span class="section-line"></span>
+    </div>
+    <div class="menu-card">
+      <div class="menu-row"><span class="menu-name">Bakso Iga Sapi</span><span class="menu-price">Rp 20.000</span></div>
+      <div class="menu-row"><span class="menu-name">Bakso Urat</span><span class="menu-price">Rp 14.000</span></div>
+      <div class="menu-row"><span class="menu-name">Bakso Halus</span><span class="menu-price">Rp 14.000</span></div>
+      <div class="menu-row"><span class="menu-name">Bakso Bakar + Nasi</span><span class="menu-price">Rp 14.000</span></div>
+      <div class="menu-row"><span class="menu-name">Bihun Goreng</span><span class="menu-price">Rp 16.000</span></div>
+    </div>
+
+    <!-- Mie -->
+    <div class="section-header" style="margin-bottom:8px;margin-top:18px;">
+      <span style="font-size:.75rem;font-weight:700;color:var(--muted);letter-spacing:1px;text-transform:uppercase;">Mie</span>
+      <span class="section-line"></span>
+    </div>
+    <div class="menu-card">
+      <div class="menu-row"><span class="menu-name">Mie Tek-Tek (Goreng/Kuah)</span><span class="menu-price">Rp 16.000</span></div>
+      <div class="menu-row"><span class="menu-name">Mie Kwetiau</span><span class="menu-price">Rp 16.000</span></div>
+      <div class="menu-row"><span class="menu-name">Mie Ayam</span><span class="menu-price">Rp 14.000</span></div>
+      <div class="menu-row"><span class="menu-name">Mie Ayam Bakso</span><span class="menu-price">Rp 18.000</span></div>
+    </div>
+
+    <!-- Nasi -->
+    <div class="section-header" style="margin-bottom:8px;margin-top:18px;">
+      <span style="font-size:.75rem;font-weight:700;color:var(--muted);letter-spacing:1px;text-transform:uppercase;">Nasi &amp; Lele</span>
+      <span class="section-line"></span>
+    </div>
+    <div class="menu-card">
+      <div class="menu-row"><span class="menu-name">Nasi Goreng Biasa</span><span class="menu-price">Rp 14.000</span></div>
+      <div class="menu-row"><span class="menu-name">Nasi Goreng Spesial</span><span class="menu-price">Rp 17.000</span></div>
+      <div class="menu-row"><span class="menu-name">Nasi Goreng Kencur</span><span class="menu-price">Rp 16.000</span></div>
+      <div class="menu-row"><span class="menu-name">Rawon + Nasi</span><span class="menu-price">Rp 20.000</span></div>
+      <div class="menu-row"><span class="menu-name">Pecel Lele + Nasi</span><span class="menu-price">Rp 14.000</span></div>
+      <div class="menu-row"><span class="menu-name">Lele Bakar + Nasi</span><span class="menu-price">Rp 16.000</span></div>
+    </div>
+
+    <!-- Soto -->
+    <div class="section-header" style="margin-bottom:8px;margin-top:18px;">
+      <span style="font-size:.75rem;font-weight:700;color:var(--muted);letter-spacing:1px;text-transform:uppercase;">Soto</span>
+      <span class="section-line"></span>
+    </div>
+    <div class="menu-card">
+      <div class="menu-row"><span class="menu-name">Soto Ayam + Nasi</span><span class="menu-price">Rp 14.000</span></div>
+      <div class="menu-row"><span class="menu-name">Soto Betawi + Nasi</span><span class="menu-price">Rp 22.000</span></div>
+      <div class="menu-row"><span class="menu-name">Soto Lamongan + Nasi</span><span class="menu-price">Rp 22.000</span></div>
+      <div class="menu-row"><span class="menu-name">Soto Daging + Nasi</span><span class="menu-price">Rp 18.000</span></div>
+      <div class="menu-row"><span class="menu-name">Soto Tangkar + Nasi</span><span class="menu-price">Rp 20.000</span></div>
+    </div>
+
+    <!-- Sop -->
+    <div class="section-header" style="margin-bottom:8px;margin-top:18px;">
+      <span style="font-size:.75rem;font-weight:700;color:var(--muted);letter-spacing:1px;text-transform:uppercase;">Sop &amp; Iga</span>
+      <span class="section-line"></span>
+    </div>
+    <div class="menu-card">
+      <div class="menu-row"><span class="menu-name">Sop Bakso + Nasi</span><span class="menu-price">Rp 14.000</span></div>
+      <div class="menu-row"><span class="menu-name">Sop Ayam + Nasi</span><span class="menu-price">Rp 14.000</span></div>
+      <div class="menu-row"><span class="menu-name">Sop Sapi + Nasi</span><span class="menu-price">Rp 18.000</span></div>
+      <div class="menu-row"><span class="menu-name">Sop Kambing + Nasi</span><span class="menu-price">Rp 22.000</span></div>
+      <div class="menu-row"><span class="menu-name">Sop Iga + Nasi</span><span class="menu-price">Rp 28.000</span></div>
+      <div class="menu-row"><span class="menu-name">Iga Bakar + Nasi</span><span class="menu-price">Rp 28.000</span></div>
+    </div>
+
+    <!-- Tongseng & Bebek -->
+    <div class="section-header" style="margin-bottom:8px;margin-top:18px;">
+      <span style="font-size:.75rem;font-weight:700;color:var(--muted);letter-spacing:1px;text-transform:uppercase;">Tongseng &amp; Bebek</span>
+      <span class="section-line"></span>
+    </div>
+    <div class="menu-card">
+      <div class="menu-row"><span class="menu-name">Tongseng Ayam + Nasi</span><span class="menu-price">Rp 15.000</span></div>
+      <div class="menu-row"><span class="menu-name">Tongseng Sapi + Nasi</span><span class="menu-price">Rp 20.000</span></div>
+      <div class="menu-row"><span class="menu-name">Tongseng Kambing + Nasi</span><span class="menu-price">Rp 22.000</span></div>
+      <div class="menu-row"><span class="menu-name">Bebek Goreng/Bakar + Nasi</span><span class="menu-price">Rp 20.000</span></div>
+    </div>
+  </section>
+
+  <!-- ══ MINUMAN ══ -->
+  <section id="minuman">
+    <div class="section-header">
+      <span class="section-icon">🥤</span>
+      <h2 class="section-title">Daftar Minuman</h2>
+      <span class="section-line"></span>
+    </div>
+    <div class="menu-card">
+      <div class="menu-row"><span class="menu-name">Es Teh Manis</span><span class="menu-price">Rp 4.000</span></div>
+      <div class="menu-row"><span class="menu-name">Teh Manis Anget</span><span class="menu-price">Rp 3.000</span></div>
+      <div class="menu-row"><span class="menu-name">Es Teh Tawar</span><span class="menu-price">Rp 2.000</span></div>
+      <div class="menu-row"><span class="menu-name">Es Jeruk</span><span class="menu-price">Rp 6.000</span></div>
+      <div class="menu-row"><span class="menu-name">Jeruk Anget</span><span class="menu-price">Rp 5.000</span></div>
+      <div class="menu-row"><span class="menu-name">Es Lemon Tea</span><span class="menu-price">Rp 7.000</span></div>
+      <div class="menu-row"><span class="menu-name">Lemon Tea Anget</span><span class="menu-price">Rp 6.000</span></div>
+      <div class="menu-row"><span class="menu-name">Es Milo</span><span class="menu-price">Rp 5.000</span></div>
+      <div class="menu-row"><span class="menu-name">Es Cappucino</span><span class="menu-price">Rp 5.000</span></div>
+      <div class="menu-row"><span class="menu-name">VIT</span><span class="menu-price">Rp 4.000</span></div>
+      <div class="menu-row"><span class="menu-name">AQUA</span><span class="menu-price">Rp 5.000</span></div>
+      <div class="menu-row"><span class="menu-name">Le Mineral</span><span class="menu-price">Rp 5.000</span></div>
+      <div class="menu-row"><span class="menu-name">Kapal Api</span><span class="menu-price">Rp 4.000</span></div>
+      <div class="menu-row"><span class="menu-name">Es Susu Putih / Coklat</span><span class="menu-price">Rp 5.000</span></div>
+      <div class="menu-row"><span class="menu-name">Tea Jus</span><span class="menu-price">Rp 3.000</span></div>
+      <div class="menu-row"><span class="menu-name">Es Susu Dancow</span><span class="menu-price">Rp 6.000</span></div>
+    </div>
+  </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="ft-name">RM MAKMUR</div>
+  <div class="ft-line">📍 Jl. Ronggo Waluyo No. 17, Depan Kampus UNSIKA</div>
+  <div class="ft-line">📞 0895373778346</div>
+  <div class="ft-platforms">
+    <span class="plat-badge">🛵 GoFood</span>
+    <span class="plat-badge">🛵 ShopeeFood</span>
+    <span class="plat-badge">🛵 GrabFood</span>
+  </div>
+</footer>
+
+</body>
+</html>
